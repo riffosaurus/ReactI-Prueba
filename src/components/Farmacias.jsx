@@ -33,11 +33,11 @@ const consultarInformacion = async () => {
   return (
 
 
-    <div>
+    <div className="m-3 text-center">
         <h2>Farmacia de turno hoy</h2>
-        <Container>
+        <Container fluid className="pt-3">
            {/* mostramos todos los resultados que guardamos anteriormente*/}
-            <Card>
+            <Card className="bg-secondary">
                 <Card.Body>
                     <Card.Title>{info}</Card.Title>
                 </Card.Body>

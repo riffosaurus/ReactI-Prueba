@@ -1,16 +1,20 @@
 
 import React from 'react';
 import Farmacias from './components/Farmacias';
-
-import RowColLayoutExample from './components/Header';
-import FormDisabledExample from './components/MainForm';
+import { useState } from 'react';
+import FormDropdown from './components/MainForm';
 
 function App() {
+
+//estado para guardar el value del menu select dropdown
+const [valorSelect, setValorSelect] = useState('');
+console.log(valorSelect);
+
   return (
-    <div className="App">
+    <div className="App text-white">
      
-     <FormDisabledExample />
-     <Farmacias />
+     <FormDropdown valorSelect={valorSelect} setValorSelect={setValorSelect}/>
+     <Farmacias valorSelect={valorSelect}/>
     </div>
   );
 }
