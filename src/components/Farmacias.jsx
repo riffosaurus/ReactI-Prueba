@@ -24,24 +24,44 @@ const consultarInformacion = async () => {
     const url = "http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos";
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
+    let listaDeFarmacias = "";
     //revisamos que la API nos esté entregando la información
     console.log(resultado); 
-//con setInfo guardamos la información en el estado info de la primera farmacia
-    setInfo(`La farmacia de turno es ${resultado[0].local_nombre}`);
-    };
+
+    //recorremos el array resultado con for each
+   //resultado.forEach((elemento) => console.log(elemento.local_nombre)
+    //);
+
+    for (let farmacia of resultado) {
+        listaDeFarmacias += 
+         `${farmacia.local_nombre} + `
+        };
+
+    setInfo(listaDeFarmacias);
+ 
+};
+
+
+
+    
+
+
+    
 
   return (
 
 
     <div className="m-3 text-center">
-        <h2>Farmacia de turno hoy</h2>
+        <h2>Farmacias de turno hoy</h2>
         <Container fluid className="pt-3">
            {/* mostramos todos los resultados que guardamos anteriormente*/}
-            <Card className="bg-secondary">
-                <Card.Body>
-                    <Card.Title>{info}</Card.Title>
-                </Card.Body>
-            </Card>
+           
+           <Card className="bg-secondary">
+            <Card.Body>
+            <Card.Title>{info}</Card.Title>
+        </Card.Body>
+        </Card>
+            
         </Container>
     </div>
   )
