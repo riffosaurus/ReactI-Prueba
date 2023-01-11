@@ -7,11 +7,11 @@ import { Container, Card } from "react-bootstrap";
 //funcion de componentes farmacias
 
 
-function Farmacias() {
+function Farmacias(props) {
 
 
-//Creamos el estado de info, que guardará la información de la api
-    const [info, setInfo] = useState([]);
+
+
 
 //Llamamos a la funcion que consume la API al momento de cargar o "montar" el componente
 useEffect(() => {
@@ -24,22 +24,45 @@ const consultarInformacion = async () => {
     const url = "http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos";
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
-    let listaDeFarmacias = "";
     //revisamos que la API nos esté entregando la información
     console.log(resultado); 
 
-    //recorremos el array resultado con for each
-   //resultado.forEach((elemento) => console.log(elemento.local_nombre)
-    //);
+    props.setInfo(resultado);
+}
 
-    for (let farmacia of resultado) {
-        listaDeFarmacias += 
-         `${farmacia.local_nombre} + `
-        };
 
-    setInfo(listaDeFarmacias);
- 
-};
+
+
+    const renderCard = (card, index) => {
+      //falta ordenar los resultados nuermicamente segun fk_region
+        return(
+          <Card key={index} className="bg-secondary">
+            <Card.Body>
+              <Card.Title>{card.local_nombre}</Card.Title>
+              <Card.Text>
+                Comuna de {card.comuna_nombre}
+              </Card.Text>
+              <Card.Text>
+                Dirección: {card.local_direccion}
+              </Card.Text>
+              <Card.Text>
+                Teléfono: {card.local_telefono}
+              </Card.Text>
+              
+              </Card.Body>
+              </Card>
+        )
+      }
+        
+        
+          
+      
+    
+  
+
+
+
+
 
 
 
@@ -50,17 +73,15 @@ const consultarInformacion = async () => {
 
   return (
 
-
-    <div className="m-3 text-center">
+/* función del componente Farmacias.jsx */
+    <div className=" m-1 text-center">
         <h2>Farmacias de turno hoy</h2>
-        <Container fluid className="pt-3">
-           {/* mostramos todos los resultados que guardamos anteriormente*/}
+        <Container fluid className=" pt-3">
+           {/* mostramos todos los resultados que guardamos anteriormente, con map se llama a la función renderCard para cada objeto del array*/}
            
-           <Card className="bg-secondary">
-            <Card.Body>
-            <Card.Title>{info}</Card.Title>
-        </Card.Body>
-        </Card>
+           {
+           props.info.map(renderCard) 
+    }
             
         </Container>
     </div>
