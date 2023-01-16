@@ -6,8 +6,6 @@ import { useState } from 'react';
 
 function FormDropdown(props) {
 
-
-
 //capturamos el valor del menu dropdown
 const capturarDropdown = (e) => {
     e.preventDefault();
@@ -15,14 +13,12 @@ const capturarDropdown = (e) => {
     console.log(e.target.value);
   }
 
-
-
   return (
     <Card className='p-3 m-3 bg-secondary'>
     <Form >
       <fieldset>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Select">Seleccione su ciudad</Form.Label>
+          <Form.Label htmlFor="Select">Seleccione su región</Form.Label>
           <Form.Select id="Select"  onChange={capturarDropdown}>
             <option value={'SELECCIONE'}>Seleccione su región</option>
             {/* Los valores de los value corresponden al codigo de fk_región de la API de farmacias de turno */}
@@ -36,15 +32,13 @@ const capturarDropdown = (e) => {
             <option value={"8"}>O'Higgins</option>
             <option value={"9"}>Maule</option>
             {/* ñuble va antes del bio bio por orden territorial, a pesar que su valor sea 16 */}
-            <option value={"16"}>Bio Bío</option>
-            <option value={"10"}>Araucanía</option>
-            <option value={"11"}>Los Ríos</option>
-            <option value={"12"}>Los Lagos</option>
-            <option value={"13"}>Aysén</option>
-            <option value={"14"}>Magallanes y Antártica Chilena</option>
-            <option value={"15"}>Ñuble</option>
-            
-
+            <option value={"16"}>Ñuble</option>
+            <option value={"10"}>Bio bío</option>
+            <option value={"11"}>Araucanía</option>
+            <option value={"12"}>Los Ríos</option>
+            <option value={"13"}>Los Lagos</option>
+            <option value={"14"}>Aysén</option>
+            <option value={"15"}>Magallanes y Antártica Chilena</option>
           </Form.Select>
         </Form.Group>
       </fieldset>

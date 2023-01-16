@@ -11,8 +11,6 @@ function Farmacias(props) {
 
 
 
-
-
 //Llamamos a la funcion que consume la API al momento de cargar o "montar" el componente
 useEffect(() => {
     consultarInformacion()
@@ -53,23 +51,7 @@ const consultarInformacion = async () => {
               </Card>
         )
       }
-        
-        
-          
-      
-    
-  
 
-
-
-
-
-
-
-    
-
-
-    
 
   return (
 
