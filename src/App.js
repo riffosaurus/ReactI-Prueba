@@ -11,7 +11,7 @@ const [valorSelect, setValorSelect] = useState('');
 //Creamos el estado de info, que guardará la información de la api
 const [info, setInfo] = useState([]);
 //console.log para revisar el cambio de valor al seleccionar opciones del dropdown
-console.log(valorSelect);
+console.log(valorSelect + ' APP');
 
   return (
     <div className="App text-white">

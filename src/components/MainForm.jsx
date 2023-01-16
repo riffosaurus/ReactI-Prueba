@@ -10,7 +10,7 @@ function FormDropdown(props) {
 const capturarDropdown = (e) => {
     e.preventDefault();
     props.setValorSelect(e.target.value);
-    console.log(e.target.value);
+    console.log(e.target.value + ' target value MainForm');
   }
 
   return (
@@ -20,7 +20,7 @@ const capturarDropdown = (e) => {
         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Select">Seleccione su región</Form.Label>
           <Form.Select id="Select"  onChange={capturarDropdown}>
-            <option value={'SELECCIONE'}>Seleccione su región</option>
+            <option value={''}>Seleccione su región</option>
             {/* Los valores de los value corresponden al codigo de fk_región de la API de farmacias de turno */}
             <option value={"1"}>Arica-Parinacota</option>
             <option value={"2"}>Tarapacá</option>

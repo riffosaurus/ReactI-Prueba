@@ -1,7 +1,7 @@
 //importa el usestate y useffect
 import React, { useState, useEffect } from "react";
 //importa el componente de bootstrap de contenedor y card
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row, Col} from "react-bootstrap";
 
 
 //funcion de componentes farmacias
@@ -26,15 +26,19 @@ const consultarInformacion = async () => {
     console.log(resultado); 
 
     props.setInfo(resultado);
-}
 
+}
+//console.log para asegurarnos que farmacias esté leyendo el nuevo valor del menú dropdown cuando se actualiza
+console.log(props.valorSelect + ' componente famacias')
 
 
 
     const renderCard = (card, index) => {
       //falta ordenar los resultados nuermicamente segun fk_region
+      
         return(
-          <Card key={index} className="bg-secondary">
+          <Col className="d-flex align-items-stretch col-sm-2 pt-4">
+          <Card key={index} className="bg-secondary w-100">
             <Card.Body>
               <Card.Title>{card.local_nombre}</Card.Title>
               <Card.Text>
@@ -49,6 +53,7 @@ const consultarInformacion = async () => {
               
               </Card.Body>
               </Card>
+              </Col>
         )
       }
 
@@ -56,15 +61,17 @@ const consultarInformacion = async () => {
   return (
 
 /* función del componente Farmacias.jsx */
-    <div className=" m-1 text-center">
+    <div className=" m-1 text-center pt-4">
         <h2>Farmacias de turno hoy</h2>
         <Container fluid className=" pt-3">
+          <Row className="d-flex align-items-stretch">
            {/* mostramos todos los resultados que guardamos anteriormente, con map se llama a la función renderCard para cada objeto del array*/}
            
            {
+           
            props.info.map(renderCard) 
     }
-            
+            </Row>
         </Container>
     </div>
   )
