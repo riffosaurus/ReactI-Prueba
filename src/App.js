@@ -1,8 +1,8 @@
 
 import React from 'react';
-import Farmacias from './components/Farmacias';
+import Farmacias from './components/MiApi';
 import { useState } from 'react';
-import FormDropdown from './components/MainForm';
+import FormDropdown from './components/FormRegiones';
 
 function App() {
 
