@@ -21,14 +21,19 @@ function Farmacias(props) {
     const resultado = await respuesta.json();
     //revisamos que la API nos esté entregando la información
     console.log(resultado);
-    //sort de resultado a partir de la comuna
-    resultado.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1);
     //retornamos resultado para que sea guardado en el estado info
     props.setInfo(resultado);
   }
 
   const renderCard = (card, index) => {
-    //la condición filtrará las farmacias de acuerdo al valor del menú dropdown
+    //la condicion filtrará los resultados alfabeticamente en orden A-Z, tambien en caso de que el valor sea vacio, para la carga inicial
+if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
+      props.setInfo(props.info.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1));
+    }
+    else if (props.valorSelect2 === 'des') {
+      props.setInfo(props.info.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1).reverse());}
+
+    //la condición filtrará las farmacias de acuerdo al valor del menú dropdown 1, según la región
     if (card.fk_region === props.valorSelect)
       return (
         <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
@@ -49,7 +54,7 @@ function Farmacias(props) {
           </Card>
         </Col>
       )
-    //esta condición mostrará todas las farmacias cuando el valor del menú dropdown sea vacío
+    //esta condición mostrará todas las farmacias cuando el valor del menú dropdown 1 sea vacío
     else if (props.valorSelect === '')
       return (
         <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">

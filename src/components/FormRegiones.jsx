@@ -5,11 +5,16 @@ import { Card, Form } from 'react-bootstrap';
 
 function FormDropdown(props) {
 
-  //capturamos el valor del menu dropdown
+  //capturamos el valor del menu dropdown, para ordenar los resultados por región
   const capturarDropdown = (e) => {
     e.preventDefault();
     props.setValorSelect(e.target.value);
-    console.log(e.target.value + ' target value Menu Dropdown');
+  }
+
+  //Capturamos el valor del segundo dropdown, para ordenar los resultados alfabeticamente por comuna
+  const capturarDropdown2 = (e) => {
+    e.preventDefault();
+    props.setValorSelect2(e.target.value);
   }
 
   return (
@@ -19,7 +24,7 @@ function FormDropdown(props) {
           <Form.Group className="mb-3" >
             <Form.Label htmlFor="Select">Seleccione su región</Form.Label>
             <Form.Select id="Select" onChange={capturarDropdown}>
-              <option value={''}>Seleccione su región</option>
+              <option value={''}>Todas las regiones</option>
               {/* Los valores de los value corresponden al codigo de fk_región de la API de farmacias de turno */}
               <option value={"1"}>Arica-Parinacota</option>
               <option value={"2"}>Tarapacá</option>
@@ -39,6 +44,13 @@ function FormDropdown(props) {
               <option value={"14"}>Aysén</option>
               <option value={"15"}>Magallanes y Antártica Chilena</option>
             </Form.Select>
+            {/* Menu Dropdown para seleccionar cómo ordenar los resultados */}
+            <Form.Label htmlFor="Select" className='pt-3'>Ordenar por comuna</Form.Label>
+            <Form.Select id="Select" onChange={capturarDropdown2} >
+              <option value={"asc"}>Orden alfabético A-Z</option>
+              <option value={"des"}>Orden alfabético Z-A</option>
+            </Form.Select>
+
           </Form.Group>
         </fieldset>
       </Form>
