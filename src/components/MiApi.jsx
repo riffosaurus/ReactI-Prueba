@@ -33,6 +33,9 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
     else if (props.valorSelect2 === 'des') {
       props.setInfo(props.info.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1).reverse());}
 
+
+
+      /* Hay que agregar Modals para generar ventanas pop-up con los datos detallados */
     //la condición filtrará las farmacias de acuerdo al valor del menú dropdown 1, según la región
     if (card.fk_region === props.valorSelect)
       return (
