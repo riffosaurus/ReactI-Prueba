@@ -1,25 +1,21 @@
 
 import React from 'react';
-import Farmacias from './components/MiApi';
 import { useState } from 'react';
+import Farmacias from './components/MiApi';
 import FormDropdown from './components/FormRegiones';
+
 
 function App() {
 
-//estado para guardar el value del menu select dropdown
-const [valorSelect, setValorSelect] = useState('');
-//Creamos el estado de info, que guardará la información de la api
-const [info, setInfo] = useState([]);
-//Estado para guardar el valor de orden de la comuna
-
-//console.log para revisar el cambio de valor al seleccionar opciones del dropdown
-console.log(valorSelect + ' APP');
+  //estado para guardar el value del menu select dropdown
+  const [valorSelect, setValorSelect] = useState('');
+  //Creamos el estado de info, que guardará la información de la api
+  const [info, setInfo] = useState([]);
 
   return (
     <div className="App text-white">
-     
-     <FormDropdown valorSelect={valorSelect} setValorSelect={setValorSelect} />
-     <Farmacias    valorSelect={valorSelect} info={info} setInfo={setInfo} />
+      <FormDropdown valorSelect={valorSelect} setValorSelect={setValorSelect} />
+      <Farmacias valorSelect={valorSelect} info={info} setInfo={setInfo} />
     </div>
   );
 }
