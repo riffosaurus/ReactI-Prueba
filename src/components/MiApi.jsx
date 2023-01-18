@@ -31,7 +31,7 @@ function Farmacias(props) {
     //la condición filtrará las farmacias de acuerdo al valor del menú dropdown
     if (card.fk_region === props.valorSelect)
       return (
-        <Col className="d-flex align-items-stretch col-sm-2 pt-4">
+        <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
           <Card key={index} className="bg-secondary w-100">
             <Card.Body>
               <Card.Title>{card.local_nombre}</Card.Title>
@@ -52,7 +52,7 @@ function Farmacias(props) {
     //esta condición mostrará todas las farmacias cuando el valor del menú dropdown sea vacío
     else if (props.valorSelect === '')
       return (
-        <Col className="d-flex align-items-stretch col-sm-2 pt-4">
+        <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
           <Card key={index} className="bg-secondary w-100">
             <Card.Body>
               <Card.Title>{card.local_nombre}</Card.Title>
