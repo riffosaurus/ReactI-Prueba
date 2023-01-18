@@ -1,8 +1,7 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import {  Card } from 'react-bootstrap';
+
+import { Card, Form} from 'react-bootstrap';
 import React from 'react';
-import { useState } from 'react';
+
 
 function FormDropdown(props) {
 
@@ -12,6 +11,8 @@ const capturarDropdown = (e) => {
     props.setValorSelect(e.target.value);
     console.log(e.target.value + ' target value MainForm');
   }
+
+
 
   return (
     <Card className='p-3 m-3 bg-secondary'>
@@ -40,6 +41,8 @@ const capturarDropdown = (e) => {
             <option value={"14"}>Aysén</option>
             <option value={"15"}>Magallanes y Antártica Chilena</option>
           </Form.Select>
+ 
+
         </Form.Group>
       </fieldset>
     </Form>

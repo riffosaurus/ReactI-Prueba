@@ -10,14 +10,16 @@ function App() {
 const [valorSelect, setValorSelect] = useState('');
 //Creamos el estado de info, que guardará la información de la api
 const [info, setInfo] = useState([]);
+//Estado para guardar el valor de orden de la comuna
+
 //console.log para revisar el cambio de valor al seleccionar opciones del dropdown
 console.log(valorSelect + ' APP');
 
   return (
     <div className="App text-white">
      
-     <FormDropdown valorSelect={valorSelect} setValorSelect={setValorSelect}/>
-     <Farmacias    valorSelect={valorSelect} info={info} setInfo={setInfo}/>
+     <FormDropdown valorSelect={valorSelect} setValorSelect={setValorSelect} />
+     <Farmacias    valorSelect={valorSelect} info={info} setInfo={setInfo} />
     </div>
   );
 }

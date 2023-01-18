@@ -24,8 +24,11 @@ const consultarInformacion = async () => {
     const resultado = await respuesta.json();
     //revisamos que la API nos esté entregando la información
     console.log(resultado); 
-
+    //sort de resultado a partir de la comuna
+    resultado.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1);
+//retornamos resultado para que sea guardado en el estado info
     props.setInfo(resultado);
+
 
 }
 //console.log para asegurarnos que farmacias esté leyendo el nuevo valor del menú dropdown cuando se actualiza
@@ -36,7 +39,10 @@ console.log(props.valorSelect + ' componente famacias')
     const renderCard = (card, index) => {
       //la condición filtrará las farmacias de acuerdo al valor del menú dropdown
       if (card.fk_region === props.valorSelect)
+      
+
         return(
+         
           <Col className="d-flex align-items-stretch col-sm-2 pt-4">
           <Card key={index} className="bg-secondary w-100">
             <Card.Body>
