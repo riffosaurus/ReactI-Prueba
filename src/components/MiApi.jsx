@@ -1,12 +1,16 @@
 //importa el usestate y useffect
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 //importa el componente de bootstrap de contenedor y card
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Container, Card, Row, Col, Button, Modal } from "react-bootstrap";
 
 
 //funcion de componente farmacias
 function Farmacias(props) {
 
+  //prep para los modals
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   //Llamamos a la funcion que consume la API al momento de cargar o "montar" el componente utilizando el hook useEffect
   useEffect(() => {
@@ -33,14 +37,14 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
     else if (props.valorSelect2 === 'des') {
       props.setInfo(props.info.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1).reverse());}
 
-
+     
 
       /* Hay que agregar Modals para generar ventanas pop-up con los datos detallados */
     //la condición filtrará las farmacias de acuerdo al valor del menú dropdown 1, según la región
     if (card.fk_region === props.valorSelect)
       return (
         <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
-          <Card key={index} className="bg-secondary w-100">
+          <Card key={card.local_direccion} className="bg-secondary w-100">
             <Card.Body>
               <Card.Title>{card.local_nombre}</Card.Title>
               <Card.Text>
@@ -52,7 +56,24 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
               <Card.Text>
                 Teléfono: {card.local_telefono}
               </Card.Text>
+              <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
 
+      <Modal key={card.local_direccion} show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{card.local_direccion}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
             </Card.Body>
           </Card>
         </Col>
@@ -61,7 +82,7 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
     else if (props.valorSelect === '')
       return (
         <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
-          <Card key={index} className="bg-secondary w-100">
+          <Card key={card.local_direccion} className="bg-secondary w-100">
             <Card.Body>
               <Card.Title>{card.local_nombre}</Card.Title>
               <Card.Text>
@@ -73,7 +94,24 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
               <Card.Text>
                 Teléfono: {card.local_telefono}
               </Card.Text>
+              <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
 
+      <Modal key={card.local_direccion} show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{card.local_direccion}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
             </Card.Body>
           </Card>
         </Col>
