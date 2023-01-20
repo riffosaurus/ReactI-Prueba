@@ -1,28 +1,35 @@
-import React from 'react'
-import { useState } from 'react';
+import React from 'react';
 import { Modal, Button } from "react-bootstrap";
 
 
 
 
 const ModalR = (props) => {
-    
-  return (
-    <Modal key={props.local_direccion} show={props.show} onHide={props.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{props.local_direccion}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={props.handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-  )
+    const { farmacias } = props;
+    const handleClose = () => props.setShow(false);
+    return (
+        <Modal key={farmacias.local_direccion} show={props.show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    {farmacias.local_nombre}
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>{farmacias.local_direccion}</p>
+                <p>Dirección: {farmacias.local_direccion}</p>
+                <p>Teléfono: {farmacias.local_telefono}</p>
+
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                    Save Changes
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    )
 }
 
 export default ModalR

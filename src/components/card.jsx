@@ -19,17 +19,11 @@ function CardR(props) {
               <Card.Text>
                 Comuna de {farmacias.comuna_nombre}
               </Card.Text>
-              <Card.Text>
-                Dirección: {farmacias.local_direccion}
-              </Card.Text>
-              <Card.Text>
-                Teléfono: {farmacias.local_telefono}
-              </Card.Text>
+              
               <Button variant="primary" onClick={handleShow} >
-        Launch demo modal
-      </Button>
-//identificador unico para cada modal, 
-      <ModalR show={show} close={handleClose} farmacias={farmacias} setShow={setShow}/>
+        Ver más
+      </Button> 
+      <ModalR show={show} close={handleClose} farmacias={farmacias} setShow={setShow} />
             </Card.Body>
           </Card>
         </Col>
