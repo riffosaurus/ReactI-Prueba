@@ -2,15 +2,13 @@
 import React, { useEffect, useState } from "react";
 //importa el componente de bootstrap de contenedor y card
 import { Container, Card, Row, Col, Button, Modal } from "react-bootstrap";
+import CardR from "./card";
 
 
 //funcion de componente farmacias
 function Farmacias(props) {
 
-  //prep para los modals
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
 
   //Llamamos a la funcion que consume la API al momento de cargar o "montar" el componente utilizando el hook useEffect
   useEffect(() => {
@@ -30,6 +28,7 @@ function Farmacias(props) {
   }
 
   const renderCard = (card, index) => {
+    console.log(card);
     //la condicion filtrará los resultados alfabeticamente en orden A-Z, tambien en caso de que el valor sea vacio, para la carga inicial
 if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
       props.setInfo(props.info.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1));
@@ -42,79 +41,14 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
       /* Hay que agregar Modals para generar ventanas pop-up con los datos detallados */
     //la condición filtrará las farmacias de acuerdo al valor del menú dropdown 1, según la región
     if (card.fk_region === props.valorSelect)
+    
       return (
-        <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
-          <Card key={card.local_direccion} className="bg-secondary w-100">
-            <Card.Body>
-              <Card.Title>{card.local_nombre}</Card.Title>
-              <Card.Text>
-                Comuna de {card.comuna_nombre}
-              </Card.Text>
-              <Card.Text>
-                Dirección: {card.local_direccion}
-              </Card.Text>
-              <Card.Text>
-                Teléfono: {card.local_telefono}
-              </Card.Text>
-              <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal key={card.local_direccion} show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{card.local_direccion}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-            </Card.Body>
-          </Card>
-        </Col>
+        <CardR farmacias={card}/>
       )
     //esta condición mostrará todas las farmacias cuando el valor del menú dropdown 1 sea vacío
     else if (props.valorSelect === '')
       return (
-        <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
-          <Card key={card.local_direccion} className="bg-secondary w-100">
-            <Card.Body>
-              <Card.Title>{card.local_nombre}</Card.Title>
-              <Card.Text>
-                Comuna de {card.comuna_nombre}
-              </Card.Text>
-              <Card.Text>
-                Dirección: {card.local_direccion}
-              </Card.Text>
-              <Card.Text>
-                Teléfono: {card.local_telefono}
-              </Card.Text>
-              <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal key={card.local_direccion} show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{card.local_direccion}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-            </Card.Body>
-          </Card>
-        </Col>
+        <CardR farmacias={card}/>
       )
   }
 
