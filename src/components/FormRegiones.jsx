@@ -17,6 +17,12 @@ function FormDropdown(props) {
     props.setValorSelect2(e.target.value);
   }
 
+  const capturarInput = (e) => {
+    e.preventDefault();
+    props.setValorInput(e.target.value);
+    console.log(e.target.value)
+  }
+
   return (
     <Card className='p-3 m-3 bg-light text-dark'>
       <Form >
@@ -52,7 +58,11 @@ function FormDropdown(props) {
             </Form.Select>
 
 {/* input y boton de buscar para filtrar los resultados */}
+<Form.Group>
+              <Form.Label htmlFor="input" className='pt-3'>Buscar por nombre de comuna</Form.Label>
+              <Form.Control type="text" id="input" placeholder="Ingrese nombre de comuna" onChange={capturarInput} />
 
+</Form.Group>
           </Form.Group>
         </fieldset>
       </Form>

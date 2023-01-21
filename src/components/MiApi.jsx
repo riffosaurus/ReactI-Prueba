@@ -28,7 +28,6 @@ function Farmacias(props) {
   }
 
   const renderCard = (card) => {
-    console.log(card);
     //la condicion filtrará los resultados alfabeticamente en orden A-Z, tambien en caso de que el valor sea vacio, para la carga inicial
 if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
       props.setInfo(props.info.sort((a, b) => (a.comuna_nombre > b.comuna_nombre) ? 1 : -1));
@@ -40,14 +39,24 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
 
       /* Hay que agregar Modals para generar ventanas pop-up con los datos detallados */
     //la condición filtrará las farmacias de acuerdo al valor del menú dropdown 1, según la región
-    if (card.fk_region === props.valorSelect)
+    //la segunda parte de la condicion filtra las farmacias de acuerdo al valor del input, si corresponden con el valor dentro de alguna comuna
+    if (card.fk_region === props.valorSelect && card.comuna_nombre.toLowerCase().includes(props.valorInput.toLowerCase())
+    )
+
+    
     
       return (
         /* Se llama al componente card */
         <CardR farmacias={card}/>
       )
+
+
+   
+
     //esta condición mostrará todas las farmacias cuando el valor del menú dropdown 1 sea vacío
-    else if (props.valorSelect === '')
+    //la segunda parte de la condicion filtra las farmacias de acuerdo al valor del input, si corresponden con el valor dentro de alguna comuna
+    else if (props.valorSelect === '' && card.comuna_nombre.toLowerCase().includes(props.valorInput.toLowerCase())
+    )
       return (
         /* Se llama al componente */
         <CardR farmacias={card}/>
