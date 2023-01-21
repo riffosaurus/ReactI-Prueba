@@ -59,7 +59,9 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
 
     /* función del componente Farmacias.jsx */
     <div className=" m-1 text-center pt-4">
+      <div className="text-center">
       <h2>Farmacias de turno hoy</h2>
+      </div>
       <Container fluid className=" pt-3">
         <Row className="d-flex align-items-stretch">
           {/* mostramos todos los resultados que guardamos anteriormente, con map se llama a la función renderCard para cada objeto del array.

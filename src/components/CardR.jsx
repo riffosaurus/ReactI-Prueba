@@ -15,9 +15,9 @@ function CardR(props) {
     <Col className="d-flex align-items-stretch col-sm-4 col-xl-3 col-xxl-2 pt-4">
           <Card key={farmacias.local_direccion} className="bg-light text-dark w-100">
             <Card.Body className='d-flex flex-column'>
-              <Card.Title>{farmacias.local_nombre}</Card.Title>
-              <Card.Text>
-                Comuna de {farmacias.comuna_nombre}
+              <Card.Title className='align-top mt-auto'>{farmacias.local_nombre}</Card.Title>
+              <Card.Text className='align-center mt-auto'>
+               {farmacias.comuna_nombre}
               </Card.Text>
               
               <Button className="align-bottom mt-auto" variant="primary" onClick={handleShow} >
