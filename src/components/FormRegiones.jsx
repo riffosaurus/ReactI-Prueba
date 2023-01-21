@@ -51,6 +51,8 @@ function FormDropdown(props) {
               <option value={"des"}>Orden alfabético Z-A</option>
             </Form.Select>
 
+{/* input y boton de buscar para filtrar los resultados */}
+
           </Form.Group>
         </fieldset>
       </Form>
