@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Farmacias from './components/MiApi';
-import FormDropdown from './components/FormRegiones';
+import FiltrosBusqueda from './components/FiltrosBusqueda';
 
 
 function App() {
@@ -18,8 +18,15 @@ function App() {
 
   return (
     <div className="App text-white">
-      <FormDropdown valorSelect={valorSelect} setValorSelect={setValorSelect} valorSelect2={valorSelect2} setValorSelect2={setValorSelect2} valorInput={valorInput} setValorInput={setValorInput}/>
-      <Farmacias valorSelect={valorSelect} info={info} setInfo={setInfo} valorSelect2={valorSelect2} valorInput={valorInput}/>
+      <FiltrosBusqueda
+        valorSelect={valorSelect} setValorSelect={setValorSelect}
+        valorSelect2={valorSelect2} setValorSelect2={setValorSelect2}
+        valorInput={valorInput} setValorInput={setValorInput} />
+
+      <Farmacias valorSelect={valorSelect}
+        info={info} setInfo={setInfo}
+        valorSelect2={valorSelect2}
+        valorInput={valorInput} />
     </div>
   );
 }
