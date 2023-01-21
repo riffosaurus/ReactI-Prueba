@@ -18,7 +18,7 @@ function FormDropdown(props) {
   }
 
   return (
-    <Card className='p-3 m-3 bg-secondary'>
+    <Card className='p-3 m-3 bg-light text-dark'>
       <Form >
         <fieldset>
           <Form.Group className="mb-3" >
