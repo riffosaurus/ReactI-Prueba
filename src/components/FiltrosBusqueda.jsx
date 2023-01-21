@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, Form } from 'react-bootstrap';
 
 
-function FormDropdown(props) {
+function FiltrosBusqueda(props) {
 
   //capturamos el valor del menu dropdown, para ordenar los resultados por región
   const capturarDropdown = (e) => {
@@ -15,6 +15,11 @@ function FormDropdown(props) {
   const capturarDropdown2 = (e) => {
     e.preventDefault();
     props.setValorSelect2(e.target.value);
+  }
+
+  const capturarInput = (e) => {
+    e.preventDefault();
+    props.setValorInput(e.target.value);
   }
 
   return (
@@ -46,11 +51,17 @@ function FormDropdown(props) {
             </Form.Select>
             {/* Menu Dropdown para seleccionar cómo ordenar los resultados */}
             <Form.Label htmlFor="Select" className='pt-3'>Ordenar por comuna</Form.Label>
-            <Form.Select id="Select" onChange={capturarDropdown2} >
+            <Form.Select id="Búsqueda" onChange={capturarDropdown2} >
               <option value={"asc"}>Orden alfabético A-Z</option>
               <option value={"des"}>Orden alfabético Z-A</option>
             </Form.Select>
 
+            {/* input y boton de buscar para filtrar los resultados */}
+            <Form.Group>
+              <Form.Label htmlFor="input" className='pt-3'>Buscar por nombre de comuna</Form.Label>
+              <Form.Control type="text" id="input" placeholder="Ingrese nombre de comuna" onChange={capturarInput} />
+
+            </Form.Group>
           </Form.Group>
         </fieldset>
       </Form>
@@ -58,4 +69,4 @@ function FormDropdown(props) {
   );
 }
 
-export default FormDropdown;
+export default FiltrosBusqueda;
