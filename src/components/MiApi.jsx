@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 //importa el componente de bootstrap de contenedor y card
 import { Container, Card, Row, Col, Button, Modal } from "react-bootstrap";
-import CardR from "./card";
+import CardR from "./CardR";
 
 
 //funcion de componente farmacias
@@ -27,7 +27,7 @@ function Farmacias(props) {
     props.setInfo(resultado);
   }
 
-  const renderCard = (card, index) => {
+  const renderCard = (card) => {
     console.log(card);
     //la condicion filtrará los resultados alfabeticamente en orden A-Z, tambien en caso de que el valor sea vacio, para la carga inicial
 if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
@@ -43,11 +43,13 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
     if (card.fk_region === props.valorSelect)
     
       return (
+        /* Se llama al componente card */
         <CardR farmacias={card}/>
       )
     //esta condición mostrará todas las farmacias cuando el valor del menú dropdown 1 sea vacío
     else if (props.valorSelect === '')
       return (
+        /* Se llama al componente */
         <CardR farmacias={card}/>
       )
   }
@@ -63,6 +65,7 @@ if (props.valorSelect2 === 'asc' || props.valorSelect2 === '') {
           {/* mostramos todos los resultados que guardamos anteriormente, con map se llama a la función renderCard para cada objeto del array.
            si el array dentro de info se encuentra vacío, se mostrará el string 'cargando' mientras se espera la respuesta de la API*/}
           {props.info.length === 0 ? <h3>Cargando...</h3> :
+          /* Se mapea el arreglo y se llama a renderCard para aplicar los filtros y renderizar las card */
             props.info.map(renderCard)
 
           }
