@@ -1,7 +1,7 @@
 //importa el usestate y useffect
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 //importa el componente de bootstrap de contenedor y card
-import { Container, Card, Row, Col, Button, Modal } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import CardR from "./CardR";
 
 
@@ -18,7 +18,7 @@ function Farmacias(props) {
   //funcion que consultará la aPI
   const consultarInformacion = async () => {
     //para poder consumir la API, tuvimos que instalar el CORS unblocker en el navegador
-    const url = "https://cors-anywhere.herokuapp.com/http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos";
+    const url = "http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos";
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
     //revisamos que la API nos esté entregando la información
