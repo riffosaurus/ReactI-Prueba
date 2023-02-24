@@ -18,7 +18,7 @@ function Farmacias(props) {
   //funcion que consultará la aPI
   const consultarInformacion = async () => {
     //para poder consumir la API, tuvimos que instalar el CORS unblocker en el navegador
-    const url = "http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos";
+    const url = "https://cors-anywhere.herokuapp.com/http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos";
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
     //revisamos que la API nos esté entregando la información
