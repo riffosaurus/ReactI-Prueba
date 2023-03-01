@@ -58,7 +58,7 @@ function Farmacias(props) {
     /* función del componente Farmacias.jsx */
     <div className=" m-1 text-center pt-4">
       <div className="text-center">
-        <h2>Farmacias de turno hoy</h2>
+        <h2>💊 Farmacias de turno hoy 💊</h2>
       </div>
       <Container fluid className=" pt-3">
         <Row className="d-flex align-items-stretch">
